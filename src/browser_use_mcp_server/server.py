@@ -6,15 +6,16 @@ This provides a clean import path for the CLI and other code.
 
 import os
 import sys
+
 from server.server import (
+    CONFIG,
     Server,
-    main,
-    create_browser_context_for_task,
-    run_browser_task_async,
     cleanup_old_tasks,
+    create_browser_context_for_task,
     create_mcp_server,
     init_configuration,
-    CONFIG,
+    main,
+    run_browser_task_async,
     task_store,
 )
 

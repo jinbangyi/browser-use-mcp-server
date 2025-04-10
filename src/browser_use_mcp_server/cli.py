@@ -5,12 +5,13 @@ This module provides a command-line interface for starting the browser-use MCP s
 It wraps the existing server functionality with a CLI.
 """
 
-import os
-import sys
+import importlib.util
 import json
 import logging
+import os
+import sys
+
 import click
-import importlib.util
 from pythonjsonlogger import jsonlogger
 
 # Configure logging for CLI

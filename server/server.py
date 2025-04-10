@@ -10,34 +10,34 @@ The server supports Server-Sent Events (SSE) for web-based interfaces.
 """
 
 # Standard library imports
-import os
 import asyncio
 import json
 import logging
+import os
+import sys
+import time
 import traceback
 import uuid
 from datetime import datetime
 from typing import Any, Dict, Optional, Tuple, Union
-import time
-import sys
 
 # Third-party imports
 import click
-from dotenv import load_dotenv
-from pythonjsonlogger import jsonlogger
+import mcp.types as types
 
 # Browser-use library imports
 from browser_use import Agent
 from browser_use.browser.browser import Browser, BrowserConfig
 from browser_use.browser.context import BrowserContext, BrowserContextConfig
-
-# MCP server components
-from mcp.server import Server
-import mcp.types as types
+from dotenv import load_dotenv
+from langchain_core.language_models import BaseLanguageModel
 
 # LLM provider
 from langchain_openai import ChatOpenAI
-from langchain_core.language_models import BaseLanguageModel
+
+# MCP server components
+from mcp.server import Server
+from pythonjsonlogger import jsonlogger
 
 # Configure logging
 logger = logging.getLogger()
@@ -806,12 +806,13 @@ def main(
     )
 
     # Set up SSE transport
+    import asyncio
+    import threading
+
+    import uvicorn
     from mcp.server.sse import SseServerTransport
     from starlette.applications import Starlette
     from starlette.routing import Mount, Route
-    import uvicorn
-    import asyncio
-    import threading
 
     sse = SseServerTransport("/messages/")
 
