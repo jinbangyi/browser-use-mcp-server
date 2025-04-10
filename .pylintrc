@@ -1,0 +1,7 @@
+[MASTER]
+disable=
+    import-error,
+    no-value-for-parameter
+
+[FORMAT]
+max-line-length=120 
