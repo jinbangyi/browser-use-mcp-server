@@ -15,6 +15,9 @@ import json
 import logging
 import os
 import sys
+
+# Set up SSE transport
+import threading
 import time
 import traceback
 import uuid
@@ -24,6 +27,7 @@ from typing import Any, Dict, Optional, Tuple, Union
 # Third-party imports
 import click
 import mcp.types as types
+import uvicorn
 
 # Browser-use library imports
 from browser_use import Agent
@@ -37,7 +41,10 @@ from langchain_openai import ChatOpenAI
 
 # MCP server components
 from mcp.server import Server
+from mcp.server.sse import SseServerTransport
 from pythonjsonlogger import jsonlogger
+from starlette.applications import Starlette
+from starlette.routing import Mount, Route
 
 # Configure logging
 logger = logging.getLogger()
@@ -804,15 +811,6 @@ def main(
         window_height=window_height,
         locale=locale,
     )
-
-    # Set up SSE transport
-    import asyncio
-    import threading
-
-    import uvicorn
-    from mcp.server.sse import SseServerTransport
-    from starlette.applications import Starlette
-    from starlette.routing import Mount, Route
 
     sse = SseServerTransport("/messages/")
 
