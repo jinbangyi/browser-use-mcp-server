@@ -892,7 +892,7 @@ def main(
 
         uvicorn.run(
             starlette_app,
-            host="0.0.0.0",  # nosec B104 - Deliberately binding to all interfaces for container usage
+            host="0.0.0.0",  # nosec
             port=port,
             log_config=log_config,
             log_level="info",
@@ -900,7 +900,7 @@ def main(
 
     # If proxy mode is enabled, run both the SSE server and mcp-proxy
     if stdio:
-        import subprocess  # nosec B404 - Required for proxy mode
+        import subprocess  # nosec
 
         # Start the SSE server in a separate thread
         sse_thread = threading.Thread(target=run_uvicorn)
@@ -925,8 +925,8 @@ def main(
         )
 
         try:
-            # nosec B603 - Using trusted command arguments from CLI parameters
-            with subprocess.Popen(proxy_cmd) as proxy_process:
+            # Using trusted command arguments from CLI parameters
+            with subprocess.Popen(proxy_cmd) as proxy_process:  # nosec
                 proxy_process.wait()
         except Exception as e:
             logger.error(f"Error starting mcp-proxy: {str(e)}")

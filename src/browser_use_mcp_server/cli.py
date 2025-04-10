@@ -37,7 +37,6 @@ def log_error(message: str, error: Optional[Exception] = None):
 @click.group()
 def cli():
     """Browser-use MCP server command line interface."""
-    pass
 
 
 @cli.command()
