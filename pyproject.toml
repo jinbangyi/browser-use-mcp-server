@@ -77,8 +77,7 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
-packages = ["src", "server"]
-include = ["server"]
+include = ["src/browser_use_mcp_server", "server"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/browser_use_mcp_server", "server"]
