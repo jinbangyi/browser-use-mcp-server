@@ -57,7 +57,8 @@ COPY --from=builder /app /app
 # Set proper permissions
 RUN chmod -R 755 /python /app
 
-ENV PATH="/app/.venv/bin:$PATH" \
+ENV ANONYMIZED_TELEMETRY=false \
+    PATH="/app/.venv/bin:$PATH" \
     DISPLAY=:0 \
     CHROME_BIN=/usr/bin/chromium \
     CHROMIUM_FLAGS="--no-sandbox --headless --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage"
