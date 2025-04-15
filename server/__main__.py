@@ -1,3 +1,5 @@
+"""Server entry point."""
+
 import sys
 
 from server import main
