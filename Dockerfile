@@ -7,7 +7,7 @@ ENV UV_COMPILE_BYTECODE=1 \
 
 # Install build dependencies and clean up in the same layer
 RUN apt-get update -y && \
-    apt-get install --no-install-recommends -y clang && \
+    apt-get install --no-install-recommends -y clang git && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Python before the project for caching
@@ -57,7 +57,8 @@ COPY --from=builder /app /app
 # Set proper permissions
 RUN chmod -R 755 /python /app
 
-ENV PATH="/app/.venv/bin:$PATH" \
+ENV ANONYMIZED_TELEMETRY=false \
+    PATH="/app/.venv/bin:$PATH" \
     DISPLAY=:0 \
     CHROME_BIN=/usr/bin/chromium \
     CHROMIUM_FLAGS="--no-sandbox --headless --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage"
