@@ -3,6 +3,7 @@
 <div align="center">
 
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/cobrowser.svg?style=social&label=Follow%20%40cobrowser)](https://x.com/cobrowser)
+[![Discord](https://img.shields.io/discord/1351569878116470928?logo=discord&logoColor=white&label=discord&color=white)](https://discord.gg/5rXvx94j6Z)
 [![PyPI version](https://badge.fury.io/py/browser-use-mcp-server.svg)](https://badge.fury.io/py/browser-use-mcp-server)
 
 **An MCP server that enables AI agents to control web browsers using
