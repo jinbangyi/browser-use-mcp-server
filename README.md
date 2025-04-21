@@ -9,6 +9,8 @@
 **An MCP server that enables AI agents to control web browsers using
 [browser-use](https://github.com/browser-use/browser-use).**
 
+> **🔗 Managing multiple MCP servers?** Simplify your development workflow with [agent-browser](https://github.com/co-browser/agent-browser)
+
 </div>
 
 ## Prerequisites
