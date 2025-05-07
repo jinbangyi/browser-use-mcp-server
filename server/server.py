@@ -101,6 +101,7 @@ def init_configuration() -> Dict[str, Any]:
         # Browser window settings
         "DEFAULT_WINDOW_WIDTH": int(os.environ.get("BROWSER_WINDOW_WIDTH", 1280)),
         "DEFAULT_WINDOW_HEIGHT": int(os.environ.get("BROWSER_WINDOW_HEIGHT", 1100)),
+        "CDP_URL": os.environ.get("CDP_URL", "http://localhost:9222"),
         # Browser config settings
         "DEFAULT_LOCALE": os.environ.get("BROWSER_LOCALE", "en-US"),
         "DEFAULT_USER_AGENT": os.environ.get(
@@ -166,6 +167,7 @@ async def create_browser_context_for_task(
         # Create browser configuration
         browser_config = BrowserConfig(
             extra_chromium_args=CONFIG["BROWSER_ARGS"],
+            cdp_url=CONFIG["CDP_URL"],
         )
 
         # Set chrome path if provided
